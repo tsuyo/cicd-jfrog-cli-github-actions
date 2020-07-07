@@ -10,22 +10,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          registry-url: https://tsuyo.jfrog.io/artifactory/api/npm/ga/
-          token: ${{ secrets.NPM_TOKEN }}
-          
+      - uses: actions/checkout@v2
+      # - uses: actions/setup-node@v1
+      #   with:
+      #     registry-url: https://tsuyo.jfrog.io/artifactory/api/npm/ga/
+      #     token: ${{ secrets.NPM_TOKEN }}
+      - uses: jfrog/setup-jfrog-cli@v1
+        env:
+          JF_ARTIFACTORY_1: ${{ secrets.JF_ARTIFACTORY_SECRET_1 }}
+      - run: jfrog --version
+              
       - name: npm install and build webpack
+        # TODO jfrog rt npmi needs buildname & buildnumber
         run: |
-          npm install
+          jfrog rt npmi ga
           npm run build
       # - uses: actions/upload-artifact@master
       #   with:
       #     name: webpack artifacts
       #     path: public/
-      - uses: jfrog/setup-jfrog-cli@v1
-      - run: jfrog --version
 
   # deploy:
   #   name: Deploy Node.js app to AWS
