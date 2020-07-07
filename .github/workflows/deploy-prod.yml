@@ -10,20 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout source
+      - name: Checkout source
         uses: actions/checkout@v2
-      - name: setup jfrog cli
+      - name: Setup jfrog cli
         uses: jfrog/setup-jfrog-cli@v1
         env:
           JF_ARTIFACTORY_1: ${{ secrets.JF_ARTIFACTORY_SECRET_1 }}
-      - run: jfrog --version
               
       - name: npm install and build webpack
         # TODO jfrog rt npmi needs buildname & buildnumber
         run: |
           jfrog rt npmi ga-npm
           npm run build
-          jfrog rt u "public/" ga-generic
+          jfrog rt u "public/" ga-generic/public/
       # - uses: actions/upload-artifact@master
       #   with:
       #     name: webpack artifacts
