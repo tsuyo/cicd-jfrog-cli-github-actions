@@ -21,7 +21,7 @@ jobs:
               
       - name: Run npm install and build webpack
         run: |        
-          jfrog rt npmi ga-npm
+          jfrog rt npmci ga-npm
           npm run build
           jfrog rt u "public/" ga-generic/public/
 
@@ -33,7 +33,7 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v2
-        
+
       - name: Setup jfrog cli
         uses: jfrog/setup-jfrog-cli@v1.0.5
         env:
