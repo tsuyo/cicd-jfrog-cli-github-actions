@@ -23,7 +23,7 @@ jobs:
       - name: npm install and build webpack
         # TODO jfrog rt npmi needs buildname & buildnumber
         run: |        
-          JFROG_CLI_LOG_LEVEL=DEBUG jfrog rt npmi ga-npm
+          jfrog rt npmi ga-npm
           npm run build
           jfrog rt u "public/" ga-generic/public/
         # run: |
