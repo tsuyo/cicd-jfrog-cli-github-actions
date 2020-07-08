@@ -10,8 +10,8 @@ let p1, p2
 //     ? `Please enter a different name than ${p1}.`
 //     : 'Who is player 2?')
 // }
-p1 = 'Hirose'
-p2 = 'Takahashi'
+p1 = 'Hirose-San'
+p2 = 'Takahashi-San'
 
 window.onload = () => {
   document.getElementById('p1Name').innerText = p1
