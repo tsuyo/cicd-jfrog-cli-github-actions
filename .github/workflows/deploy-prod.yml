@@ -34,10 +34,6 @@ jobs:
       #     name: webpack artifacts
       #     path: public/
 
-  deploy:
-    name: Deploy Node.js app to AWS
-    needs: build
-    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout source
