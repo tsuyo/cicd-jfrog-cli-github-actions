@@ -22,47 +22,47 @@ jobs:
               
       - name: npm install and build webpack
         # TODO jfrog rt npmi needs buildname & buildnumber
-        # run: |
-        #   jfrog rt npmci ga-npm
-        #   npm run build
-        #   jfrog rt u "public/" ga-generic/public/
         run: |
-          npm install
+          jfrog rt npmi ga-npm
           npm run build
           jfrog rt u "public/" ga-generic/public/
+        # run: |
+        #   npm install
+        #   npm run build
+        #   jfrog rt u "public/" ga-generic/public/
       # - uses: actions/upload-artifact@master
       #   with:
       #     name: webpack artifacts
       #     path: public/
 
-  deploy:
-    name: Deploy Node.js app to AWS
-    needs: build
-    runs-on: ubuntu-latest
+  # deploy:
+  #   name: Deploy Node.js app to AWS
+  #   needs: build
+  #   runs-on: ubuntu-latest
     
-    steps:
-      - name: Checkout source
-        uses: actions/checkout@v2
-      - name: Setup jfrog cli
-        uses: jfrog/setup-jfrog-cli@v1.0.5
-        with:
-          version: 1.37.1
-        env:
-          JF_ARTIFACTORY_1: ${{ secrets.JF_ARTIFACTORY_SECRET_1 }}
+  #   steps:
+  #     - name: Checkout source
+  #       uses: actions/checkout@v2
+  #     - name: Setup jfrog cli
+  #       uses: jfrog/setup-jfrog-cli@v1.0.5
+  #       with:
+  #         version: 1.37.1
+  #       env:
+  #         JF_ARTIFACTORY_1: ${{ secrets.JF_ARTIFACTORY_SECRET_1 }}
 
-      - name: Download built artifact
-        run:
-          jfrog rt dl ga-generic/public/
-  # #       uses: actions/download-artifact@master
-  # #       with:
-  # #         name: webpack artifacts
-  # #         path: public
+  #     - name: Download built artifact
+  #       run:
+  #         jfrog rt dl ga-generic/public/
+  # # #       uses: actions/download-artifact@master
+  # # #       with:
+  # # #         name: webpack artifacts
+  # # #         path: public
 
-      - name: Deploy to AWS
-        uses:  github/deploy-nodejs@master
-        env:
-          AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
-          AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+  #     - name: Deploy to AWS
+  #       uses:  github/deploy-nodejs@master
+  #       env:
+  #         AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+  #         AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
 
   # Build-and-Push-Docker-Image:
   #   runs-on: ubuntu-latest
