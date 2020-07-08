@@ -1,15 +1,17 @@
 import Game from './game.js'
 
 let p1, p2
-while (!p1) {
-  p1 = window.prompt('Who is player 1?')
-}
+// while (!p1) {
+//   p1 = window.prompt('Who is player 1?')
+// }
 
-while (!p2 && p1 !== p2) {
-  p2 = window.prompt(p1 === p2
-    ? `Please enter a different name than ${p1}.`
-    : 'Who is player 2?')
-}
+// while (!p2 && p1 !== p2) {
+//   p2 = window.prompt(p1 === p2
+//     ? `Please enter a different name than ${p1}.`
+//     : 'Who is player 2?')
+// }
+p1 = 'Hirose'
+p2 = 'Takahashi'
 
 window.onload = () => {
   document.getElementById('p1Name').innerText = p1
