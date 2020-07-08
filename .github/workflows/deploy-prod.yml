@@ -41,7 +41,7 @@ jobs:
 
     steps:
       - name: Checkout source
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
       - name: Setup jfrog cli
         uses: jfrog/setup-jfrog-cli@v1.0.5
         with:
@@ -57,11 +57,11 @@ jobs:
   # #         name: webpack artifacts
   # #         path: public
 
-  #     - name: Deploy to AWS
-  #       uses:  github/deploy-nodejs@master
-  #       env:
-  #         AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
-  #         AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+      - name: Deploy to AWS
+        uses:  github/deploy-nodejs@master
+        env:
+          AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
 
   # Build-and-Push-Docker-Image:
   #   runs-on: ubuntu-latest
