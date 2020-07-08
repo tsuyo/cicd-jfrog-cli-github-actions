@@ -49,19 +49,19 @@ jobs:
         env:
           JF_ARTIFACTORY_1: ${{ secrets.JF_ARTIFACTORY_SECRET_1 }}
 
-      - name: Download built artifact
-        run:
-          jfrog rt dl ga-generic/public/
-  #       uses: actions/download-artifact@master
-  #       with:
-  #         name: webpack artifacts
-  #         path: public
+  #     - name: Download built artifact
+  #       run:
+  #         jfrog rt dl ga-generic/public/
+  # #       uses: actions/download-artifact@master
+  # #       with:
+  # #         name: webpack artifacts
+  # #         path: public
 
-      - name: Deploy to AWS
-        uses:  github/deploy-nodejs@master
-        env:
-          AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
-          AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+  #     - name: Deploy to AWS
+  #       uses:  github/deploy-nodejs@master
+  #       env:
+  #         AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+  #         AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
 
   # Build-and-Push-Docker-Image:
   #   runs-on: ubuntu-latest
