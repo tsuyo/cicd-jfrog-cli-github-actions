@@ -34,20 +34,7 @@ jobs:
       #     name: webpack artifacts
       #     path: public/
 
-  deploy:
-    name: Deploy Node.js app to AWS
-    needs: build
-    runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout source
-      - uses: actions/checkout@v2
-      - name: Setup jfrog cli
-        uses: jfrog/setup-jfrog-cli@v1.0.5
-        with:
-          version: 1.37.1
-        env:
-          JF_ARTIFACTORY_1: ${{ secrets.JF_ARTIFACTORY_SECRET_1 }}
 
   #     - name: Download built artifact
   #       run:
