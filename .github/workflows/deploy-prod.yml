@@ -50,7 +50,7 @@ jobs:
           JF_ARTIFACTORY_1: ${{ secrets.JF_ARTIFACTORY_SECRET_1 }}
 
       - name: Download built artifact
-        run: |
+        run:
           jfrog rt dl ga-generic/public/
   #       uses: actions/download-artifact@master
   #       with:
