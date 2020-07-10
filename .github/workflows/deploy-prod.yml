@@ -26,7 +26,8 @@ jobs:
           jfrog rt u "public/" ga-generic/public/          
 
       - name: Run npm publish, build publish, build scan
-        run: |        
+        run: |
+          jfrog rt bce
           jfrog rt npmp ga-npm
           jfrog rt bp
           jfrog rt bs
