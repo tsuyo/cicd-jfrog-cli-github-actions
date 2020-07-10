@@ -1,4 +1,4 @@
-name: Production deployment
+name: JFrog CLI GitHub Actions NPM
 
 on:
   push:
@@ -19,12 +19,17 @@ jobs:
         env:
           JF_ARTIFACTORY_1: ${{ secrets.JF_ARTIFACTORY_SECRET_1 }}
               
-      - name: Run npm install, build and publish
+      - name: Run npm install, build
         run: |        
           jfrog rt npmci ga-npm
           npm run build
-          jfrog rt u "public/" ga-generic/public/
+          jfrog rt u "public/" ga-generic/public/          
+
+      - name: Run npm publish and upload build info
+        run: |        
           jfrog rt npmp ga-npm
+          jfrog rt bp
+  
 
   deploy:
     name: Deploy Node.js app to AWS
