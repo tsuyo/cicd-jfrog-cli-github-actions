@@ -1,7 +1,7 @@
 let p1, p2
 
-p1 = 'Hirose-San'
-p2 = 'Takahashi-San'
+p1 = 'Hirose'
+p2 = 'Takahashi'
 
 window.onload = () => {
   document.getElementById('p1Name').innerText = p1
