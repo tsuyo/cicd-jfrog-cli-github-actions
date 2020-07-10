@@ -25,10 +25,11 @@ jobs:
           npm run build
           jfrog rt u "public/" ga-generic/public/          
 
-      - name: Run npm publish and upload build info
+      - name: Run npm publish, build publish, build scan
         run: |        
           jfrog rt npmp ga-npm
           jfrog rt bp
+          jfrog rt bs
   
 
   deploy:
