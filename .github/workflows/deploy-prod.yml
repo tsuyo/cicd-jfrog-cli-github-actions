@@ -19,11 +19,12 @@ jobs:
         env:
           JF_ARTIFACTORY_1: ${{ secrets.JF_ARTIFACTORY_SECRET_1 }}
               
-      - name: Run npm install and build webpack
+      - name: Run npm install, build and publish
         run: |        
           jfrog rt npmci ga-npm
           npm run build
           jfrog rt u "public/" ga-generic/public/
+          jfrog rt npmp ga-npm
 
   deploy:
     name: Deploy Node.js app to AWS
